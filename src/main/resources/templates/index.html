@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow | Daily task manager</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.theme.min.css">
+    <script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+<table id="tasks">
+    <thead>
+    <tr>
+        <th colspan="3" id="current_date">Тут будет дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="3">
+            <input name="task_name" type="text" maxlength="255" placeholder="Название задачи" required/>
+            <span>Сложность:</span>
+            <span>
+                <input type="radio" id="bounty1" class="bounty" name="bounty" value="1" checked/>
+                <label for="bounty1">1</label>
+                <input type="radio" id="bounty2" class="bounty" name="bounty" value="2"/>
+                <label for="bounty2">2</label>
+                <input type="radio" id="bounty3" class="bounty" name="bounty" value="3"/>
+                <label for="bounty3">3</label>
+            </span>
+            <input type="button" value="Добавить" id="add_task_btn"/>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div id="karma">
+    <span>КАРМА</span>
+    <span id="score" th:text="${user.karma}">100</span>
+</div>
+<div id="spend_karma_block">
+    <a id="chill_btn">ОТДЫХ</a>
+    <a id="money_btn">ПОКУПКИ</a>
+</div>
+<div id="popup"></div>
+</body>
+</html>

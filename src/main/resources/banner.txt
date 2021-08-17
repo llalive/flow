@@ -1,0 +1,9 @@
+oooooooooooo ooooo          .oooooo.   oooooo   oooooo     oooo
+`888'     `8 `888'         d8P'  `Y8b   `888.    `888.     .8'
+ 888          888         888      888   `888.   .8888.   .8'
+ 888oooo8     888         888      888    `888  .8'`888. .8'
+ 888    "     888         888      888     `888.8'  `888.8'
+ 888          888       o `88b    d88'      `888'    `888'
+o888o        o888ooooood8  `Y8bood8P'        `8'      `8'
+
+:: ${application.title} :: (v${application.version})
