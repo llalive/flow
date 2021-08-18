@@ -48,7 +48,9 @@ $(document).ready(function () {
             applySpendKarmaSpinner(currentKarma);
             applySpendKarmaButton();
             $("#popup").dialog({
-                title: "Отдых"
+                title: "Отдых",
+                width: 500,
+                height: 215
             });
         } else {
             showNotEnoughKarmaMessage();
@@ -64,7 +66,9 @@ $(document).ready(function () {
             applySpendKarmaSpinner(currentKarma);
             applySpendKarmaButton();
             $("#popup").dialog({
-                title: "Покупки"
+                title: "Покупки",
+                width: 500,
+                height: 215
             });
         } else {
             showNotEnoughKarmaMessage();
@@ -131,7 +135,9 @@ function showNotEnoughKarmaMessage() {
 function showError(message, title) {
     $("#popup").html(message);
     $("#popup").dialog({
-        title: title
+        title: title,
+        width: 500,
+        height: 215
     });
 }
 
@@ -157,7 +163,9 @@ function applySpendKarmaButton() {
             },
             error: function (e) {
                 $("#popup").dialog({
-                    title: "Ошибка"
+                    title: "Ошибка",
+                    width: 500,
+                    height: 215
                 });
                 $("#popup").html("Не удалось потратить карму");
             }
