@@ -19,7 +19,7 @@ $(document).ready(function () {
             success: function (task) {
                 $("#tasks tbody tr:last").before("<tr>" +
                     "<td>" + task.name + "</td>" +
-                    "<td>" + task.bounty + "</td>" +
+                    "<td>" + getBounty(task.bounty) + "</td>" +
                     "<td></td>" +
                     "</tr>")
                 $('input[type="text"]').val('');
@@ -81,7 +81,7 @@ function loadTasks() {
             $.each(tasks, function (i) {
                 let task = tasks[i];
                 $("#tasks tbody tr:last").before("<tr><td>" + task.name + "</td>" +
-                    "<td>" + task.bounty + "</td>" +
+                    "<td>" + getBounty(task.bounty) + "</td>" +
                     "<td></td></tr>");
             });
             appendTaskControls();
@@ -93,8 +93,8 @@ function loadTasks() {
 
 function appendTaskControls() {
     $("#tasks tbody tr:first td:last")
-        .append("<input type='button' id='complete_btn' value='Выполнено'/>" +
-            "<input type='button' id='skip_btn' value='Пропустить'/>");
+        .append("<img src='/images/done.png' id='complete_btn' title='Выполнить' />" +
+            "<img src='/images/skip.png' id='skip_btn' title='Пропустить' />");
 
     $("#complete_btn").click(function (e) {
         $.get("/api/tasks/complete", function (score) {
@@ -119,6 +119,8 @@ function appendTaskControls() {
             updateKarma(score);
         });
     });
+
+    $(document).tooltip();
 }
 
 function showNotEnoughKarmaMessage() {
@@ -161,6 +163,16 @@ function applySpendKarmaButton() {
             }
         });
     });
+}
+
+function getBounty(count) {
+    if (count == 1) {
+        return "$";
+    } else if (count == 2) {
+        return "$$";
+    } else {
+        return "$$$";
+    }
 }
 
 function applySpendKarmaSpinner(currentKarma) {

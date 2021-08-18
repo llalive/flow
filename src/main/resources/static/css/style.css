@@ -1,3 +1,87 @@
 body {
-    font-family: Verdana;
+    font-size: 16pt;
+    font-family: monospace, sans-serif;
+    margin: 0;
+
+}
+
+#current_date, #header, #karma, #chill_btn, #money_btn {
+    font-family: monospace, sans-serif;
+    font-size: 24pt;
+    font-weight: 100;
+    text-transform: none;
+    font-style: italic;
+    text-decoration: none;
+    line-height: 0.8em;
+    letter-spacing: 2.5px;
+    padding: 10px;
+    text-shadow: 1px 1px 0px rgb(95 95 95 / 75%);
+}
+
+#header {
+    border-bottom: 2px inset #efefef;
+    background: url("https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616__480.jpg");
+    text-align: center;
+    color: rgb(255 255 255);
+}
+
+#tasks {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30pt;
+    border-collapse: collapse;
+}
+
+#tasks tr:first-child td {
+    background-color: #ccc;
+}
+
+#tasks tr td {
+    padding: 4pt 10pt;
+    margin-right: -30pt;
+}
+
+#complete_btn, #skip_btn {
+    width: 24pt;
+    padding: 10pt 10pt 0pt 2pt;
+}
+
+#complete_btn:hover, #skip_btn:hover {
+    cursor: pointer;
+}
+
+#tasks tr {
+    background-color: #fbfbfb;
+}
+
+#tasks tr td:first-child {
+    width: 60%;
+}
+
+
+#tasks tr:last-child td {
+    padding-top: 10pt;
+}
+
+#karma_block {
+    float: right;
+    position: fixed;
+    padding: 20pt;
+    margin-top: auto;
+    background-color: #fbfbfb;
+}
+
+#task_name, #spend_karma_btn, #popup {
+    border: none;
+    font-size: 16pt;
+    font-family: monospace, sans-serif;
+}
+
+#money_btn, #chill_btn, #spend_karma_btn {
+    line-height: 40px;
+    cursor: pointer;
+}
+
+#spend_karma_btn  {
+    margin-top: 6pt;
 }

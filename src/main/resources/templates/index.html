@@ -12,6 +12,7 @@
     <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
+<div id="header">FLOW</div>
 <table id="tasks">
     <thead>
     <tr>
@@ -21,27 +22,28 @@
     <tbody>
     <tr>
         <td colspan="3">
-            <input name="task_name" type="text" maxlength="255" placeholder="Название задачи" required/>
-            <span>Сложность:</span>
+            <input id="task_name" name="task_name" type="text" maxlength="255" placeholder="Название задачи" required/>
+            <span>Награда:</span>
             <span>
                 <input type="radio" id="bounty1" class="bounty" name="bounty" value="1" checked/>
-                <label for="bounty1">1</label>
+                <label for="bounty1">$</label>
                 <input type="radio" id="bounty2" class="bounty" name="bounty" value="2"/>
-                <label for="bounty2">2</label>
+                <label for="bounty2">$$</label>
                 <input type="radio" id="bounty3" class="bounty" name="bounty" value="3"/>
-                <label for="bounty3">3</label>
+                <label for="bounty3">$$$</label>
             </span>
             <input type="button" value="Добавить" id="add_task_btn"/>
+
         </td>
     </tr>
     </tbody>
 </table>
-<div id="karma">
-    <span>КАРМА</span>
-    <span id="score" th:text="${user.karma}">100</span>
-</div>
-<div id="spend_karma_block">
-    <a id="chill_btn">ОТДЫХ</a>
+<div id="karma_block">
+    <div id="karma">
+        <span>КАРМА</span>
+        <span id="score" th:text="${user.karma}">100</span>
+    </div>
+    <a id="chill_btn">ОТДЫХ</a><br/>
     <a id="money_btn">ПОКУПКИ</a>
 </div>
 <div id="popup"></div>
