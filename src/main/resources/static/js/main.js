@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("#add_task_btn").click(function (e) {
         let name = $('input[name="task_name"]').val();
-        if(!name) {
+        if (!name) {
             showError("Имя задачи не может быть пустым", "Ошибка при добавлении задачи");
             return;
         }
@@ -23,7 +23,8 @@ $(document).ready(function () {
                     "<td></td>" +
                     "</tr>")
                 $('input[type="text"]').val('');
-                $('input:radio[name="bounty"]:first').attr('checked', true);
+                $(".bounty").removeAttr("checked");
+                $("#bounty1").attr("checked", "checked");
 
                 if ($("#no_tasks_msg").length > 0) {
                     $("#no_tasks_msg").remove();
@@ -125,7 +126,7 @@ function showNotEnoughKarmaMessage() {
         " чтобы накопить карму.", "Не достаточно кармы");
 }
 
-function showError(message, title){
+function showError(message, title) {
     $("#popup").html(message);
     $("#popup").dialog({
         title: title
