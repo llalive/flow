@@ -30,6 +30,8 @@ body {
     margin-right: auto;
     margin-top: 30pt;
     border-collapse: collapse;
+    width: 60%;
+    min-width: 600px;
 }
 
 #tasks tr:first-child td {
