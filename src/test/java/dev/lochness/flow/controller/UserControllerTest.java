@@ -1,25 +1,24 @@
 package dev.lochness.flow.controller;
 
 import dev.lochness.flow.domain.User;
-import dev.lochness.flow.security.CustomUserPrincipal;
 import dev.lochness.flow.service.UserService;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Objects;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -34,32 +33,20 @@ class UserControllerTest {
 
     @Mock
     private UserService userService;
-/*
 
     @Test
-    @WithMockUser(
-            username = "test",
-            authorities = {"USER"}
-    )
+    @WithUserDetails("test")
     void shouldReturnCorrectKarmaAmount() throws Exception {
-        Authentication authentication = Mockito.mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn(
-                new org.springframework.security.core.userdetails.User(User)
-                new CustomUserPrincipal(User.builder()
-                        .username("test")
-                        .karma(10)
-                        .build()));
         given(userService.removeKarma(any(), eq(3))).willReturn(User.builder()
                 .username("test")
-                .karma(7)
+                .karma(0)
                 .build());
-        mockMvc.perform(delete("/api/users/karma").param("count", "3"))
+        mockMvc.perform(delete("/api/users/karma").param("count", "1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(new BaseMatcher<>() {
                     @Override
                     public boolean matches(Object currentKarma) {
-                        Integer s = (Integer) currentKarma;
-                        return currentKarma.equals(7);
+                        return Objects.equals(currentKarma, "0");
                     }
 
                     @Override
@@ -67,7 +54,13 @@ class UserControllerTest {
                     }
                 }));
     }
-*/
+
+    @Test
+    @WithUserDetails("test")
+    void shouldDenyToSpendKarma() throws Exception {
+        mockMvc.perform(delete("/api/users/karma").param("count", "3"))
+                .andExpect(status().isBadRequest());
+    }
 
     @Test
     @WithAnonymousUser
