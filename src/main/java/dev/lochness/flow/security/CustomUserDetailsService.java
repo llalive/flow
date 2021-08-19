@@ -1,5 +1,6 @@
 package dev.lochness.flow.security;
 
+import dev.lochness.flow.domain.User;
 import dev.lochness.flow.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,10 +18,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        var user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
+        User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException(username));
         return new CustomUserPrincipal(user);
     }
 }
