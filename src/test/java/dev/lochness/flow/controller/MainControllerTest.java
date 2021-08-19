@@ -51,7 +51,7 @@ class MainControllerTest {
     @WithUserDetails("test")
     void shouldDenyAccessToAdminPage() throws Exception {
         mockMvc.perform(get("/admin"))
-                .andExpect(status().isFound());
+                .andExpect(status().isForbidden());
     }
 
     @Test
