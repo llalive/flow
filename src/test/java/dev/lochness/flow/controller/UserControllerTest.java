@@ -34,6 +34,40 @@ class UserControllerTest {
 
     @Mock
     private UserService userService;
+/*
+
+    @Test
+    @WithMockUser(
+            username = "test",
+            authorities = {"USER"}
+    )
+    void shouldReturnCorrectKarmaAmount() throws Exception {
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(authentication.getPrincipal()).thenReturn(
+                new org.springframework.security.core.userdetails.User(User)
+                new CustomUserPrincipal(User.builder()
+                        .username("test")
+                        .karma(10)
+                        .build()));
+        given(userService.removeKarma(any(), eq(3))).willReturn(User.builder()
+                .username("test")
+                .karma(7)
+                .build());
+        mockMvc.perform(delete("/api/users/karma").param("count", "3"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(new BaseMatcher<>() {
+                    @Override
+                    public boolean matches(Object currentKarma) {
+                        Integer s = (Integer) currentKarma;
+                        return currentKarma.equals(7);
+                    }
+
+                    @Override
+                    public void describeTo(Description description) {
+                    }
+                }));
+    }
+*/
 
     @Test
     @WithAnonymousUser
