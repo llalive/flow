@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    initialization-mode: always
+    sql-script-encoding: UTF-8
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    ROOT: INFO

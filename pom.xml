@@ -13,6 +13,7 @@
     <version>3.0</version>
     <name>flow</name>
     <description>Otus.ru, Spring course homework, final project</description>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>11</java.version>
@@ -98,6 +99,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <appName>flow-daily-todo</appName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
